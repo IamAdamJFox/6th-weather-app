@@ -10,4 +10,6 @@ var wc = document.getElementById("weather");
 var sh = document.getElementById("sh");
 var forecast = document.getElementById("wc");
 
-
+click.addEventListener("click", function () {
+   console.log ("yay")
+})
