@@ -1,0 +1,17 @@
+* {
+    padding: auto;
+    margin: auto;
+}
+header {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+h1 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+    padding-left: 1%;    
+}
