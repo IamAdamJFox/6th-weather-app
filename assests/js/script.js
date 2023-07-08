@@ -84,8 +84,7 @@ function loadlastCity(){
     }
 }
 
-function clearHistory(event){
-    event.preventDefault();
+function clearHistory(){ 
     cities=[];
     localStorage.removeItem("cityname");
     document.location.reload();
