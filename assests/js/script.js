@@ -15,4 +15,11 @@ click.addEventListener("click", function () {
 
 //Weather
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=f1b9b71d4a5734c217d9cf9a83a3077e')
+    .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    
+  }
+  )
 });
