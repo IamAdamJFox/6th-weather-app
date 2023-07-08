@@ -12,6 +12,7 @@ var forecast = document.getElementById("wc");
 
 click.addEventListener("click", function () {
    var city = search.value.trim();
+   localStorage.setItem(city)
 
 //Weather
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=f1b9b71d4a5734c217d9cf9a83a3077e')
