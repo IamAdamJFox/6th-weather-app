@@ -5,7 +5,7 @@
 //add weatherforecast function
 
 var click = document.getElementById("search");
-var search = document.getElementById("cInput");
+var search = document.getElementById("input");
 var weather = document.getElementById("weather");
 var history = document.getElementById("sh");
 var forecast = document.getElementById("wc");
@@ -19,7 +19,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=f1b9
     return response.json();
   })
   .then(function (data) {
-    
+
   }
   )
 });

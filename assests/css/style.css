@@ -2,3 +2,16 @@
     box-sizing: border-box;
     
 }
+
+body {
+    
+    font-size: 16px;
+}
+
+h3{
+    font-weight: bold;
+}
+
+.forecast{
+    font-size: 1rem;
+}
