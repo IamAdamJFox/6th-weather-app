@@ -6,10 +6,13 @@
 
 var click = document.getElementById("search");
 var search = document.getElementById("cInput");
-var wc = document.getElementById("weather");
-var sh = document.getElementById("sh");
+var weather = document.getElementById("weather");
+var history = document.getElementById("sh");
 var forecast = document.getElementById("wc");
 
 click.addEventListener("click", function () {
-   console.log ("yay")
-})
+   var city = search.value.trim();
+
+//Weather
+fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=f1b9b71d4a5734c217d9cf9a83a3077e')
+});
