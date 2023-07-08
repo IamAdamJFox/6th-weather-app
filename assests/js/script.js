@@ -18,7 +18,7 @@ var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 search.addEventListener("click", function () {
     var city = input.value.trim();
     currentWeather(city)
-});
+   });
 
 function find(c){
     for (var i=0; i<cities.length; i++){
@@ -42,8 +42,12 @@ function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
     .then(function (response) {
     console.log(response);
+    var data = response;
+           })}
 
-if(response.cod==200){
+function retrieve() {
+   if(data.cod==200){
+    
     cities=JSON.parse(localStorage.getItem("cityname"));
     console.log(cities);
     if (cities==null){
@@ -60,9 +64,8 @@ if(response.cod==200){
             addToList(city);
         }
     }
-}
-})
-}
+}}
+
 
 
 function loadlastCity(){
