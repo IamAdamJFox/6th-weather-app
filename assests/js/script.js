@@ -73,8 +73,7 @@ function retrieve(data, city) {
 
 
 function loadlastCity(){
-    history.empty();
-    var cities = JSON.parse(localStorage.getItem("cityname"));
+        var cities = JSON.parse(localStorage.getItem("cityname"));
     if(cities!==null){
         cities=JSON.parse(localStorage.getItem("cityname"));
         for(i=0; i<cities.length;i++){
@@ -109,3 +108,5 @@ function addToList(c) {
 clear.addEventListener ("click", function() {
     clearHistory();
 });
+
+loadlastCity()
