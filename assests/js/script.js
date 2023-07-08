@@ -60,7 +60,7 @@ function weatherreport(data) {
     temperature.innerHTML = temp.toFixed(2) + "&#8457";
     var humid = data.main.humidity;
     console.log(humid)
-    chumidity.innerhtml = " (" + humid + ") " + "%";
+    chumidity.innerHTML = " (" + humid + ") " + "%";
     var ws = data.wind.speed;
     var windsmph = (ws*2.237).toFixed(1);
     wSpeed.innerHTML = windsmph + " MPH";
