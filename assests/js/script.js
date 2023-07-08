@@ -9,9 +9,10 @@ var input = document.getElementById("input");
 var weather = document.getElementById("weather");
 var history = document.getElementById("history");
 var forecast = document.getElementById("forecast");
-var temperature = document.getElementById("#temperature");
-var humidty= document.getElementById("#humidity");
-var wSpeed= document.getElementById("#wind-speed");
+var temperature = document.getElementById("temperature");
+var humidty = document.getElementById("humidity");
+var wSpeed = document.getElementById("wind-speed");
+var clear = document.getElementById("clear")
 
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 
@@ -40,14 +41,17 @@ function displayWeather(event){
 
 function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
-    .then(function (response) {
-    console.log(response);
-    var data = response;
-           })}
+.then(function (response) {
+    return response.json(); 
+  })
+.then(function (data) {
+    console.log(data);
+    retrieve(data, city);
+});
+}
 
-function retrieve() {
+function retrieve(data, city) {
    if(data.cod==200){
-    
     cities=JSON.parse(localStorage.getItem("cityname"));
     console.log(cities);
     if (cities==null){
@@ -99,3 +103,9 @@ function addToList(c) {
     var listGroup = document.querySelector(".list-group");
     listGroup.appendChild(listEl);
 }
+
+//eventlisteners
+
+clear.addEventListener ("click", function() {
+    clearHistory();
+});
