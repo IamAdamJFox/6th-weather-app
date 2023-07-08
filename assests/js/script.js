@@ -40,6 +40,7 @@ function displayWeather(event){
 
 function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
+console.log('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
     .then(function (response) {
     console.log(response);
 
