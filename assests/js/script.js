@@ -16,9 +16,9 @@ var wSpeed= document.getElementById("#wind-speed");
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 
 search.addEventListener("click", function () {
-    currentWeather()
+    var city = input.value.trim();
+    currentWeather(city)
 });
-var city = input.value.trim();
 
 function find(c){
     for (var i=0; i<cities.length; i++){
@@ -40,7 +40,6 @@ function displayWeather(event){
 
 function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
-console.log('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
     .then(function (response) {
     console.log(response);
 
