@@ -13,6 +13,10 @@ var temperature = document.getElementById("temperature");
 var chumidity = document.getElementById("humidity");
 var wSpeed = document.getElementById("wind-speed");
 var clear = document.getElementById("clear");
+var dates = document.getElementById("Dates");
+var imgs = document.getElementById("Imgs");
+var temps = document.getElementById("Temps");
+var humids = document.getElementById("Humids");
 
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 
@@ -36,6 +40,7 @@ function displayWeather(event){
     if(searchCity.val().trim()!==""){
         city=searchCity.val().trim();
         currentWeather(city);
+        forecast(city);
     }
 }
 
@@ -47,13 +52,13 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + 
 .then(function (data) {
     console.log(data);
     retrieve(data, city);
-    weatherreport(data)
+    weatherreport(data);
 })
 }
 function weatherreport(data) {
     console.log(data);
     var weathericon = data.weather[0].icon;
-    var iconurl ="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
+    var iconurl ="https://openweathermap.org/img/wn/" + weathericon +"@2x.png";
     var date = new Date(data.dt*1000).toLocaleDateString();
     weatherRep.innerHTML = data.name + " (" + date + ") " + "<img src='" + iconurl + "'>";
     var temp = (data.main.temp - 273.15) * 1.80 + 32;
@@ -87,6 +92,39 @@ function retrieve(data, city) {
     }
 }}
 
+function forecast(city) {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
+    .then(function (response) {
+        return response.json(); 
+      })
+    .then(function (data2) {
+      forecastrep(data2)
+    }
+    )};
+
+    function forecastrep(data2) {
+        console.log(data2)
+    .then(function(data2) {
+        for (i=0;i<5;i++){
+            var date= new Date((data2.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
+            var iconcode= data2.list[((i+1)*8)-1].weather[0].icon;
+            var iconurl="https://openweathermap.org/img/wn/"+iconcode+".png";
+            var temp1= data2.list[((i+1)*8)-1].main.temp;
+            var temp2=(((temp1-273.5)*1.80)+32).toFixed(2);
+            var humidity= data2.list[((i+1)*8)-1].main.humidity;
+
+            document.getElementById("Dates" + i).innerHTML = date;
+
+            document.getElementById("Imgs" + i).innerHTML = "<img src=" + iconurl + ">";
+
+            document.getElementById("Temps" + i).innerHTML = temp2 + "&#8457";
+
+            document.getElementById("Humiditys" + i).innerHTML = humidity + "%";
+
+        }
+    })
+    }
+    
 
 
 
