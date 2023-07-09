@@ -1,4 +1,4 @@
-;debugger
+
 //todo list
 //add search function
 //add local storage
@@ -24,7 +24,7 @@ var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 search.addEventListener("click", function () {
     var city = input.value.trim();
     currentWeather(city)
-    forecast(city)
+    forecastCity(city)
    });
 
 function find(c){
@@ -92,10 +92,11 @@ function retrieve(data, city) {
     }
 }}
 
-function forecast(city) {
+function forecastCity(city) {
+    console.log("yes")
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
-    .then(function (response) {
-        return response.json();
+    .then(function (response1) {
+        return response1.json();
         })
         .then(function (data2) {
             console.log(data2);
