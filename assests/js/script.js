@@ -63,7 +63,7 @@ function weatherreport(data) {
     chumidity.innerHTML = " (" + humid + ") " + "%";
     var ws = data.wind.speed;
     var windsmph = (ws*2.237).toFixed(1);
-    wSpeed.innerHTML = windsmph + " MPH";
+    wSpeed.innerHTML = windsmph + " MPH ";
 }
 
 
