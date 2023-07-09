@@ -13,16 +13,17 @@ var temperature = document.getElementById("temperature");
 var chumidity = document.getElementById("humidity");
 var wSpeed = document.getElementById("wind-speed");
 var clear = document.getElementById("clear");
-var dates = document.getElementById("Dates");
-var imgs = document.getElementById("Imgs");
-var temps = document.getElementById("Temps");
-var humids = document.getElementById("Humids");
+// var dates = document.getElementById("Dates");
+// var imgs = document.getElementById("Imgs");
+// var temps = document.getElementById("Temps");
+// var humids = document.getElementById("Humids");
 
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
 
 search.addEventListener("click", function () {
     var city = input.value.trim();
     currentWeather(city)
+    forecast(city)
    });
 
 function find(c){
@@ -40,8 +41,7 @@ function displayWeather(event){
     if(searchCity.val().trim()!==""){
         city=searchCity.val().trim();
         currentWeather(city);
-        forecast(city);
-    }
+        }
 }
 
 function currentWeather(city) {
