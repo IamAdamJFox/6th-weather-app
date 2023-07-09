@@ -93,14 +93,13 @@ function retrieve(data, city) {
 }}
 
 function forecastCity(city) {
-    console.log("yes")
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
+      fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
     .then(function (response1) {
         return response1.json();
         })
         .then(function (data2) {
             console.log(data2);
-            retrieve(data2);
+           
             forecastreport(data2);
         })
     };
@@ -119,13 +118,19 @@ function forecastCity(city) {
 
             document.getElementById("Temps" + i).innerHTML = temp2 + "&#8457";
 
-            document.getElementById("Humiditys" + i).innerHTML = humidity + "%";
+            document.getElementById("Humids" + i).innerHTML = humidity + "%";
 
         }
     }
-    
-    
 
+    function invokePastSearch(event){
+        var liEl=event.target;
+        if (event.target.matches("li")){
+            city=liEl.textContent.trim();
+            currentWeather(city);
+        }
+    
+    }
 
 
 function loadlastCity(){
