@@ -95,8 +95,7 @@ function forecastCity(city) {
         })
         .then(function (data2) {
             console.log(data2);
-           
-            forecastreport(data2);
+           forecastreport(data2);
         })
     };
   function forecastreport(data2) {
