@@ -1,3 +1,4 @@
+;debugger
 //todo list
 //add search function
 //add local storage
@@ -56,7 +57,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + 
 })
 }
 function weatherreport(data) {
-    console.log(data);
     var weathericon = data.weather[0].icon;
     var iconurl ="https://openweathermap.org/img/wn/" + weathericon +"@2x.png";
     var date = new Date(data.dt*1000).toLocaleDateString();
@@ -95,9 +95,15 @@ function retrieve(data, city) {
 function forecast(city) {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
     .then(function (response) {
-        return response.json(); 
-      })
-    .then(function (data2) {
+        return response.json();
+        })
+        .then(function (data2) {
+            console.log(data2);
+            retrieve(data2);
+            forecastreport(data2);
+        })
+    };
+  function forecastreport(data2) {
              for (i=0;i<5;i++){
             var date= new Date((data2.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
             var iconcode= data2.list[((i+1)*8)-1].weather[0].icon;
@@ -115,8 +121,8 @@ function forecast(city) {
             document.getElementById("Humiditys" + i).innerHTML = humidity + "%";
 
         }
-    })
     }
+    
     
 
 
