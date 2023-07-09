@@ -98,14 +98,7 @@ function forecast(city) {
         return response.json(); 
       })
     .then(function (data2) {
-      forecastrep(data2)
-    }
-    )};
-
-    function forecastrep(data2) {
-        console.log(data2)
-    .then(function(data2) {
-        for (i=0;i<5;i++){
+             for (i=0;i<5;i++){
             var date= new Date((data2.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
             var iconcode= data2.list[((i+1)*8)-1].weather[0].icon;
             var iconurl="https://openweathermap.org/img/wn/"+iconcode+".png";
