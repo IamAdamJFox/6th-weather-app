@@ -13,11 +13,12 @@ var forecast = document.getElementById("forecast");
 var temperature = document.getElementById("temperature");
 var chumidity = document.getElementById("humidity");
 var wSpeed = document.getElementById("wind-speed");
-
+const clear = document.getElementById("clear");
 
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
-//handles search bar and what was iniatiing the fetches
-search.addEventListener("click", function () {
+//handles search bar and iniatiing the fetches by inputing into the text box 
+search.addEventListener("click", function (event) {
+    event.preventDefault();
     var city = input.value.trim();
     currentWeather(city)
     forecastCity(city)
@@ -33,13 +34,6 @@ function find(c){
 }
 
 
-function displayWeather(event){
-    event.preventDefault();
-    if(searchCity.val().trim()!==""){
-        city=searchCity.val().trim();
-        currentWeather(city);
-        }
-}
 //collects weather data for current date and passes it onto weatherreport
 function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
@@ -72,8 +66,7 @@ function weatherreport(data) {
 function retrieve(data, city) {
    if(data.cod==200){
     cities=JSON.parse(localStorage.getItem("cityname"));
-    console.log(cities);
-    if (cities==null){
+       if (cities==null){
         cities=[];
         cities.push(city.toUpperCase()
         );
