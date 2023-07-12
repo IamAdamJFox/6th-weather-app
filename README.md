@@ -12,4 +12,16 @@ This app uses js for it functionality and bootstrap for most of it styling.
 
 ![iniatiated](https://github.com/IamAdamJFox/6th-weather-app/assets/125314107/15cffaf1-2b32-4f61-9522-6c0649913784)
 
+technology used
+
+javascript
+
+fetch
+
+css
+
+bootstrap
+
+
+
 deployed url: https://iamadamjfox.github.io/6th-weather-app/
