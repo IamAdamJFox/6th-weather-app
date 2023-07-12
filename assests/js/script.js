@@ -16,13 +16,13 @@ var wSpeed = document.getElementById("wind-speed");
 
 
 var API = "f1b9b71d4a5734c217d9cf9a83a3077e";
-
+//handles search bar and what was iniatiing the fetches
 search.addEventListener("click", function () {
     var city = input.value.trim();
     currentWeather(city)
     forecastCity(city)
    });
-
+//searches to see if city exists in past searches
 function find(c){
     for (var i=0; i<cities.length; i++){
         if(c.toUpperCase()===cities[i]){
@@ -40,7 +40,7 @@ function displayWeather(event){
         currentWeather(city);
         }
 }
-
+//collects weather data for current date and passes it onto weatherreport
 function currentWeather(city) {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + API)
 .then(function (response) {
@@ -52,6 +52,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + 
     weatherreport(data);
 })
 }
+//takes data from fetche and places them into html elements aswell as sets current date
 function weatherreport(data) {
     var weathericon = data.weather[0].icon;
     var iconurl ="https://openweathermap.org/img/wn/" + weathericon +"@2x.png";
@@ -67,7 +68,7 @@ function weatherreport(data) {
     wSpeed.innerHTML = windsmph + " MPH ";
 }
 
-
+//sets city in local storage so it can be shown in history
 function retrieve(data, city) {
    if(data.cod==200){
     cities=JSON.parse(localStorage.getItem("cityname"));
@@ -87,7 +88,7 @@ function retrieve(data, city) {
         }
     }
 }}
-
+//retrieves forecast data and passes it to forecastreport
 function forecastCity(city) {
       fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + API)
     .then(function (response1) {
@@ -98,6 +99,7 @@ function forecastCity(city) {
            forecastreport(data2);
         })
     };
+//inserts forecast data into html elements
   function forecastreport(data2) {
              for (i=0;i<5;i++){
             var date= new Date((data2.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
@@ -119,7 +121,7 @@ function forecastCity(city) {
     }
 
 
-
+//retrieves search and places them into a array so that it may be grabbed for display with addtolist
 function loadlastCity(){
         var cities = JSON.parse(localStorage.getItem("cityname"));
     if(cities!==null){
@@ -131,13 +133,13 @@ function loadlastCity(){
         currentWeather(city);
     }
 }
-
+//clears past searches
 function clearHistory(){ 
     cities=[];
     localStorage.removeItem("cityname");
     document.location.reload();
 }
-
+//renders past searches under searche bar
 function addToList(c) {
     var listEl = document.createElement("li");
     var textNode = document.createTextNode(c.toUpperCase());
